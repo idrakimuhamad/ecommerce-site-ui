@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import { Box, Flex } from 'reflexbox';
 import { IoFlashSharp } from 'react-icons/io5';
 import Banner from '../components/Banner';
@@ -13,11 +12,7 @@ import FlashDeals from '../components/FlashDeals';
 import Vouchers from '../components/Vouchers';
 import TopNewProducts from '../components/TopNewProducts';
 
-const ProductModal = dynamic(() => import('../components/ProductModal'), {
-  ssr: false,
-});
-
-export default function Landing({ setToast }) {
+export default function Landing({ setToast, showModal, hideModal, cartItems }) {
   const [banner, setBanner] = useState({
     image: '',
     title: '',
@@ -31,7 +26,6 @@ export default function Landing({ setToast }) {
   });
   const [selectedProductTab, setProductTab] = useState('top');
   const [products, setProduct] = useState([]);
-  const [showModal, setModal] = useState(false);
   const [loading, setLoading] = useState({
     banner: true,
     flash: true,
@@ -40,7 +34,6 @@ export default function Landing({ setToast }) {
     productDetails: false,
   });
   const [productDetails, setProductDetails] = useState(null);
-  const [cartItems, setCart] = useState([]);
 
   function bannerContent() {
     if (!banner.title) return null;
@@ -128,19 +121,16 @@ export default function Landing({ setToast }) {
   });
 
   async function getProductById(id) {
-    setLoading((state) => ({ ...state, productDetails: true }));
+    document.body.style.cursor = 'wait';
 
     try {
       const response = await fetch(`/api/product/${id}`);
-      const result = await response.json();
-
-      if (result) {
-        setProductDetails(result);
-      }
+      return response.json();
     } catch (error) {
       console.log(`error when retrieving product data: ${error}`);
+      return error;
     } finally {
-      setLoading((state) => ({ ...state, productDetails: false }));
+      document.body.style.cursor = 'default';
     }
   }
 
@@ -154,20 +144,14 @@ export default function Landing({ setToast }) {
     }
   }
 
-  function onProductClick(id) {
-    setModal(true);
-    getProductById(id);
-  }
+  async function onProductClick(id) {
+    const product = await getProductById(id);
 
-  function onCloseModal() {
-    setModal(false);
-    setProductDetails(null);
-  }
-
-  function onAddToCart(item) {
-    setCart((state) => [...state, item]);
-    setModal(false);
-    setToast('Item added to cart', 'success');
+    if (product) {
+      showModal({
+        data: product,
+      });
+    }
   }
 
   useEffect(() => {
@@ -209,14 +193,6 @@ export default function Landing({ setToast }) {
         onProductClick={onProductClick}
       />
       {/* Top New Products end */}
-
-      <ProductModal
-        visible={showModal}
-        data={productDetails}
-        isLoading={loading.productDetails}
-        onClose={onCloseModal}
-        onAddToCart={onAddToCart}
-      />
     </div>
   );
 }

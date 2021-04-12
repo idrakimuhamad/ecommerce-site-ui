@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Image from 'next/image';
 import { Box, Flex } from 'reflexbox';
@@ -271,7 +271,47 @@ function InnerModal({ visible, data, onClose, onAddToCart }) {
   );
 }
 
-export default function ProductModal({ visible, data, onClose, onAddToCart }) {
+export const useModal = () => {
+  const [visible, setModal] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  const [cartItems, setAddToCart] = useState([]);
+
+  function showModal({ data }) {
+    console.log('showmodal');
+    setModal(true);
+    setModalData(data);
+  }
+
+  function hideModal() {
+    setModal(false);
+    setModalData(null);
+  }
+
+  function onAddToCart(item) {
+    setAddToCart((state) => [...state, item]);
+    hideModal();
+  }
+
+  return {
+    state: { visible, data: modalData, cartItems },
+    showModal,
+    hideModal,
+    onAddToCart,
+  };
+};
+
+export default function ProductModal({
+  visible,
+  data,
+  onClose,
+  onAddToCart,
+  setToast,
+}) {
+  function onAdd(item) {
+    onAddToCart(item);
+    setToast('Item added to cart', 'success');
+  }
+
   return (
     <RootModal>
       <AnimatePresence>
@@ -285,7 +325,7 @@ export default function ProductModal({ visible, data, onClose, onAddToCart }) {
               visible={visible}
               data={data}
               onClose={onClose}
-              onAddToCart={onAddToCart}
+              onAddToCart={onAdd}
             />
           </motion.div>
         )}
