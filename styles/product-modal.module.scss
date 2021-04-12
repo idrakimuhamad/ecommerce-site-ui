@@ -1,0 +1,99 @@
+@import 'variable';
+
+.rootModal__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.88);
+  z-index: 77;
+}
+
+.modal__dialog {
+  background-color: #fff;
+  width: 1024px;
+  border-radius: 3rem;
+  height: 64vh;
+  padding: 4rem;
+  overflow: hidden;
+}
+
+.modal__dialog__container {
+  height: 100%;
+}
+
+.modal__dialog__innerContainer {
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal__images {
+  overflow: auto;
+}
+
+.rootModal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #fff;
+}
+
+.modal__images__inner {
+  padding: 0 2rem;
+}
+
+.modal__images__thumbnail {
+  position: relative;
+  height: 10rem;
+  border: 2px solid darken($color: $baseColor, $amount: 40);
+  transition: all 0.25s ease;
+}
+
+.modal__images__thumbnail--selected {
+  border-color: #222;
+}
+
+.modal__image__preview {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.modal__title {
+  padding: 1rem 0;
+  line-height: 1.5rem;
+}
+
+.modal__sku,
+.modal__brand,
+.modal__color__title,
+.modal__size__title,
+.modal__quantity__title {
+  color: darken($color: $baseColor, $amount: 20);
+}
+
+.modal__skuNo {
+  color: darken($color: $baseColor, $amount: 50);
+}
+
+.modal__brandName {
+  color: $primaryColor;
+}
+
+.modal__discountPrice {
+  color: $red;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.modal__price {
+  color: darken($color: $baseColor, $amount: 20);
+  font-size: 0.8rem;
+  text-decoration: line-through;
+}
+
+.modal__sizeGuide {
+  font-weight: bold;
+  font-size: 1.15rem;
+}

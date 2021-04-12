@@ -1,7 +1,14 @@
-import '../styles/globals.css'
+import Toast, { useToast } from '../components/Toast';
+import '../styles/globals.scss';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  const { toastState, setToast, hideToast } = useToast();
+  return (
+    <>
+      <Component setToast={setToast} hideToast={hideToast} {...pageProps} />
+      <Toast {...toastState} hideToast={hideToast} />
+    </>
+  );
 }
 
-export default MyApp
+export default App;

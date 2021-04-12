@@ -1,0 +1,93 @@
+@import 'variable';
+
+.header__primary {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: $primaryColor;
+}
+
+.header__secondary {
+  padding: 0.6rem 0;
+}
+
+.meta-link {
+  font-size: 0.6rem;
+  padding: 0 0.5rem 0.25rem;
+  cursor: pointer;
+  position: relative;
+  &:after {
+    content: '';
+    height: 1px;
+    background-color: #444;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    right: 100%;
+    transition: all 0.25s ease;
+  }
+  &:hover {
+    border-bottom-color: #444;
+    &:after {
+      left: 0.5rem;
+      right: 0.5rem;
+    }
+  }
+  &:last-child {
+    margin-right: -0.5rem;
+  }
+}
+
+.topbar__link {
+  padding: 0 1rem;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: $primaryColor;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+.bottomBar {
+  padding: 0.5rem 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.bottomBar__link {
+  padding: 0 0.5rem 0.2rem;
+  position: relative;
+  transition: color 0.25s ease;
+
+  &:first-of-type {
+    margin-left: -0.5rem;
+  }
+
+  &:after {
+    content: '';
+    height: 1px;
+    background-color: $primaryColor;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    right: 100%;
+    transition: all 0.25s ease;
+  }
+
+  &:hover {
+    color: $primaryColor;
+    &:after {
+      left: 0.5rem;
+      right: 0.5rem;
+    }
+  }
+}

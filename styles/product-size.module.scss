@@ -1,0 +1,42 @@
+@import 'variable';
+
+.productSize {
+  padding: 0.1rem;
+  border: 1px solid darken($color: $baseColor, $amount: 20);
+  transition: all 0.3s ease-in-out;
+}
+
+.productSize--default {
+  border-radius: 0.6rem;
+  width: 1.25rem;
+  height: 1.25rem;
+
+  .productSize__size {
+    font-size: 0.5rem;
+  }
+}
+
+.productSize--big {
+  border-radius: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-width: 2px;
+
+  .productSize__size {
+    font-size: 1.25rem;
+  }
+}
+
+.productSize--selected {
+  border-color: $primaryColor;
+
+  .productSize__size {
+    color: $primaryColor;
+  }
+}
+
+.productSize__size {
+  text-transform: uppercase;
+  color: darken($color: $baseColor, $amount: 20);
+  transition: color 0.3s ease-in-out;
+}

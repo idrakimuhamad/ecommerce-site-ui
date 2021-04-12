@@ -1,0 +1,130 @@
+@import 'variable';
+
+.productCard {
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  }
+}
+
+.productCard__heading {
+  position: relative;
+  height: 270px;
+}
+
+.productCard__headingImg {
+  border-radius: 6px;
+}
+
+.productCard__discountFav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.productCard__discountPercentage {
+  background-color: $red;
+  padding: 0.4rem 0.6rem;
+  border-radius: 1rem;
+  color: #fff;
+}
+.productCard__discountPercentage--default {
+  font-size: 0.6rem;
+}
+.productCard__discountPercentage--big {
+  font-size: 1rem;
+  padding: 0.4rem 0.75rem;
+}
+
+.productCard__fav {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(151, 126, 126, 0.1) 0px 2px 3px -1px,
+      rgba(0, 0, 0, 0.06) 0px 1px 3px -1px;
+  }
+}
+
+.productCard__fav--default {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.productCard__fav--big {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+}
+
+.productCard__fav-heart--filled {
+  color: $red;
+}
+
+.productCard__meta {
+  padding: 0.6rem;
+}
+
+.productCard__title {
+  padding-right: 0.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.productCard__options {
+  padding: 0.6rem 0;
+}
+
+.productCard__discountPrice {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  color: $red;
+}
+
+.productCard__price {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: darken($color: $baseColor, $amount: 20);
+}
+
+.productCard__ratingStar {
+  color: darken($color: $baseColor, $amount: 35);
+}
+
+.productCard__ratingNumber {
+  color: darken($color: $baseColor, $amount: 35);
+}
+
+.productCard__ratingNumber--default {
+  font-size: 0.65rem;
+}
+
+.productCard__ratingNumber--big {
+  font-size: 1rem;
+}
+
+.productCard__buy {
+  color: $primaryColor;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

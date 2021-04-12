@@ -1,0 +1,38 @@
+@import 'variable';
+
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 777;
+}
+
+.toast-container {
+  position: relative;
+  width: 18rem;
+  padding: 1.5rem 2.5rem 1.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.toast__close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.toast-container--default {
+  background-color: #fff;
+  color: #aaa;
+}
+
+.toast-container--error {
+  background-color: $red;
+  color: #fff;
+}
+
+.toast-container--success {
+  background-color: $green;
+  color: #fff;
+}

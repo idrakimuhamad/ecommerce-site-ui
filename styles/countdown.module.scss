@@ -1,0 +1,9 @@
+@import 'variable';
+
+.countdown__number {
+  background-color: $primaryColor;
+  color: #fff;
+  border-radius: 4px;
+  width: 1.75rem;
+  height: 1.75rem;
+}
